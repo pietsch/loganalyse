@@ -13,6 +13,8 @@ my @rand256 = List::Util::shuffle(0 .. 255);
 while (<>) {
   ## parse IPv4 address, and put the rest of the line into $3:
   /^(\d+\.\d+\.\d+)\.(\d+) (.+)$/;
+  next unless (defined $1 and length $1);
+  next unless (defined $2 and length $2);
   my $prefix = "$1.";
   my $postfix = $2;
   ## do not touch localhost etc.:
