@@ -18,3 +18,10 @@ You must enter these IP addresses (or entire subnets in CIDR notation) directy
 as arguments to __MATCH_IP. No placesholders (whether variables, constants or
 other function calls) are allowed there. This is a limitation of the Perl module
 `Net::IP::Match`. On the upside, it is damn fast.
+
+## zero_last_octet.pl
+
+Do not use this if you want to use the processed data in AWStats or any other log analyzer.
+`zero_last_octet.pl` is the older brother of `shuffle_last_octet.pl`. Really just a
+`sed` one-liner, is zeros the last octet of all IPv4 addresses. This will skew your
+statistics. You have been warned.
