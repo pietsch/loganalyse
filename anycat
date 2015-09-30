@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-
+## adapted example code for IO::Uncompress::AnyUncompress which was written by Paul Marquess, pmqs at cpan.org
 use strict ;
 use warnings ;
 
