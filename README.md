@@ -26,8 +26,19 @@ This script implements a filter, i.e. it reads from STDIN and writes to STDOUT. 
 If you use [AWStats](http://www.awstats.org/), use the following line in your `awstats-www.conf` (or whatever your AWStats configuration file is called):
 
 ````sh
-  LogFile="cat /var/log/apache2/access.log | /usr/local/bin/shuffle_last_octet.pl |"
+LogFile="cat /var/log/apache2/access.log | /usr/local/bin/shuffle_last_octet.pl |"
 ````
+
+Preferably though, you use this script to anonymize IP addresses even before your web server writes them to disk:
+
+[Apache](https://httpd.apache.org/docs/current/logs.html#piped) allows you to filter logging data like this:
+
+```sh
+CustomLog "| /usr/local/bin/shuffle_last_octet.pl > /var/log/apache2/access.log" common
+```
+
+When using other web server software, you can create a named pipe using `mkfifo` and log to that special file (analogous to the [log rotation solution described here](https://serverfault.com/a/216961)). The same approach should work with caching servers such as [Varnish](http://go2linux.garron.me/linux/2011/05/configure-varnish-logs-varnishnsca-logrotate-and-awstats-1014/).
+
 
 ### Limitations
 
