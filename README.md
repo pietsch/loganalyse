@@ -1,4 +1,4 @@
-# Some tools for using AWStats in accordance with EU privacy laws
+# Some tools for GDPR compliant IP address logging
 
 ## shuffle_last_octet.pl
 
